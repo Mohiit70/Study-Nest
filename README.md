@@ -1,8 +1,7 @@
 # StudyNest
+![Project Image/GIF](https://raw.githubusercontent.com/Mohiit70/Study-Nest/main/images/Study%20nest%20banner.png?token=GHSAT0AAAAAACFYFWR4ET6K5ZHM2S4MEHJ2ZKD4AWA)
 
-## Introduction
-
-Welcome to StudyNest, your gateway to collaborative learning, growth, and educational opportunities. StudyNest is designed to bring aspiring students together, offering a supportive and engaging platform for learning and connecting with like-minded individuals.
+Welcome to Study Nest, your gateway to collaborative learning, growth, and educational opportunities. StudyNest is designed to bring aspiring students together, offering a supportive and engaging platform for learning and connecting with like-minded individuals.
 
 ## Features
 
