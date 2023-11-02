@@ -28,11 +28,4 @@ Welcome to StudyNest, your gateway to collaborative learning, growth, and educat
 
 ## Feedback and Support
 
-If you have any questions, suggestions, or need assistance, please don't hesitate to reach out to our support team at [support@studynest.com](mailto:support@studynest.com).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-
-![StudyNest Logo](logo.png)
+If you have any questions or need assistance , please reach out to our at email id
