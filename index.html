@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pomodoro Timer with Motivational Quotes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #007bff;
+            margin: 20px 0;
+        }
+
+        .pomodoro-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        input {
+            width: 80px;
+            padding: 5px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .timer {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .motivational-quote {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+
+        .quote-text {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pomodoro Timer</h1>
+    <div class="pomodoro-container">
+        <label for="pomodoroDurationInput">Pomodoro Duration (minutes):</label>
+        <input type="number" id="pomodoroDurationInput" value="25">
+        <label for="breakDurationInput">Break Duration (minutes):</label>
+        <input type="number" id="breakDurationInput" value="5">
+        <div class="timer" id="timer">25:00</div>
+        <button id="startButton">Start Pomodoro</button>
+        <button id="breakButton">Take a Break</button>
+    </div>
+    <div class="motivational-quote">
+        <p>Stay focused and keep going! You've got this.</p>
+        <p class="quote-text">- Unknown</p>
+    </div>
+    <button id="printButton">Print Report</button>
+
+    <script>
+        let isPomodoroActive = false;
+        let timerInterval;
+
+        document.getElementById('startButton').addEventListener('click', startPomodoro);
+        document.getElementById('breakButton').addEventListener('click', takeBreak);
+
+        function startPomodoro() {
+            if (!isPomodoroActive) {
+                isPomodoroActive = true;
+                const pomodoroDurationInput = document.getElementById('pomodoroDurationInput').value;
+                const pomodoroDuration = pomodoroDurationInput * 60;
+                startTimer(pomodoroDuration, "Pomodoro Time");
+            }
+        }
+
+        function takeBreak() {
+            if (isPomodoroActive) {
+                isPomodoroActive = false;
+                const breakDurationInput = document.getElementById('breakDurationInput').value;
+                const breakDuration = breakDurationInput * 60;
+                startTimer(breakDuration, "Break Time");
+            }
+        }
+
+        function startTimer(duration, message) {
+            clearInterval(timerInterval);
+            const timer = document.getElementById('timer');
+            timer.textContent = formatTime(duration);
+
+            timerInterval = setInterval(function () {
+                timer.textContent = formatTime(duration);
+                if (duration <= 0) {
+                    clearInterval(timerInterval);
+                    alert(message);
+                } else {
+                    duration--;
+                }
+            }, 1000);
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes < 10 ? '0' : ''}${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+        }
+
+        document.getElementById('printButton').addEventListener('click', printReport);
+
+function printReport() {
+    // Create a new window for printing
+    const printWindow = window.open('', '', 'width=600,height=600');
+
+    // Add the content to be printed to the new window
+    const reportContent = `
+        <h1>Pomodoro Timer Report</h1>
+        <p>Date: ${new Date().toLocaleDateString()}</p>
+        <p>Pomodoro Duration: ${pomodoroDurationInput} minutes</p>
+        <p>Break Duration: ${breakDurationInput} minutes</p>
+        <p>Total Pomodoro Sessions: [Add count here]</p>
+        <p>Total Breaks: [Add count here]</p>
+        <p>Total Work Time: [Add total work time here]</p>
+    `;
+
+    printWindow.document.open();
+    printWindow.document.write(reportContent);
+    printWindow.document.close();
+
+    // Trigger the print dialog for the new window
+    printWindow.print();
+
+    // Close the new window after printing
+    printWindow.close();
+}
+
+    </script>
+</body>
+</html>
 
